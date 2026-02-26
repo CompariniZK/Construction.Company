@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Orçamento - Construtora Alicerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cinza-concreto: #2C3E50;
+            --cinza-medio: #34495E;
+            --azul-steel: #2980B9;
+            --laranja-construcao: #E67E22;
+            --branco-gelo: #ECF0F1;
+            --preto-profundo: #1A1A1A;
+            --dourado-luxo: #D4AF37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--branco-gelo);
+            color: var(--cinza-concreto);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 4rem;
+            background: rgba(26, 26, 26, 0.98);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        nav .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dourado-luxo);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--dourado-luxo);
+            transition: width 0.4s ease;
+        }
+
+        nav a:hover {
+            color: var(--dourado-luxo);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Budget */
+        .hero-budget {
+            height: 60vh;
+            background: linear-gradient(135deg, var(--azul-steel) 0%, var(--cinza-medio) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-budget::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="60" fill="none"/><path d="M0 0L30 30M30 30L60 0M30 30L60 60M30 30L0 60" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
+        }
+
+        .hero-budget-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-budget h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: white;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-budget p {
+            font-size: 1.3rem;
+            color: var(--branco-gelo);
+            line-height: 1.6;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .form-intro h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--cinza-concreto);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .form-intro p {
+            font-size: 1.1rem;
+            color: #7F8C8D;
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            background: var(--branco-gelo);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            color: var(--cinza-concreto);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--dourado-luxo);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.5rem;
+            background: var(--dourado-luxo);
+            color: var(--preto-profundo);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--laranja-construcao);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(230, 126, 34, 0.3);
+        }
+
+        /* Info Section */
+        .info-section {
+            padding: 6rem 2rem;
+            background: var(--cinza-concreto);
+            color: white;
+        }
+
+        .info-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .info-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-10px);
+        }
+
+        .info-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            color: var(--dourado-luxo);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .info-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--branco-gelo);
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 6rem 2rem;
+            background: var(--branco-gelo);
+        }
+
+        .process-section h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            text-align: center;
+            color: var(--cinza-concreto);
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+        }
+
+        .process-steps {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            background: var(--dourado-luxo);
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            color: var(--cinza-concreto);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .step p {
+            font-size: 0.95rem;
+            color: #7F8C8D;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--preto-profundo);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            color: var(--dourado-luxo);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #BDC3C7;
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--dourado-luxo);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #7F8C8D;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">ALICERCE</div>
+            <ul>
+                <li><a href="construcao-index.html">Home</a></li>
+                <li><a href="construcao-historia.html">Nossa História</a></li>
+                <li><a href="construcao-index.html#servicos">Serviços</a></li>
+                <li><a href="construcao-orcamento.html">Agendar Orçamento</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-budget">
+        <div class="hero-budget-content">
+            <h1>Agende seu Orçamento</h1>
+            <p>Vamos transformar seu projeto em realidade. Preencha o formulário e nossa equipe entrará em contato.</p>
+        </div>
+    </section>
+
+    <section class="form-section">
+        <div class="form-container">
+            <div class="form-intro">
+                <h2>Solicite uma Proposta</h2>
+                <p>Preencha os campos abaixo com as informações do seu projeto. Retornaremos em até 24 horas úteis.</p>
+            </div>
+
+            <form class="contact-form" id="budgetForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefone">Telefone *</label>
+                        <input type="tel" id="telefone" name="telefone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="empresa">Empresa (Opcional)</label>
+                        <input type="text" id="empresa" name="empresa">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo-projeto">Tipo de Projeto *</label>
+                    <select id="tipo-projeto" name="tipo-projeto" required>
+                        <option value="">Selecione uma opção</option>
+                        <option value="edificio-residencial">Edifício Residencial</option>
+                        <option value="edificio-comercial">Edifício Comercial</option>
+                        <option value="condominio">Condomínio</option>
+                        <option value="reforma">Reforma e Ampliação</option>
+                        <option value="projeto-arquitetonico">Projeto Arquitetônico</option>
+                        <option value="consultoria">Consultoria Técnica</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cidade">Cidade do Projeto *</label>
+                    <input type="text" id="cidade" name="cidade" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="orcamento">Orçamento Estimado</label>
+                    <select id="orcamento" name="orcamento">
+                        <option value="">Selecione uma faixa</option>
+                        <option value="ate-500k">Até R$ 500 mil</option>
+                        <option value="500k-1m">R$ 500 mil - R$ 1 milhão</option>
+                        <option value="1m-3m">R$ 1 milhão - R$ 3 milhões</option>
+                        <option value="3m-5m">R$ 3 milhões - R$ 5 milhões</option>
+                        <option value="acima-5m">Acima de R$ 5 milhões</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensagem">Descreva seu Projeto *</label>
+                    <textarea id="mensagem" name="mensagem" required placeholder="Conte-nos mais sobre seu projeto, prazos desejados e qualquer informação relevante..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Enviar Solicitação</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon">📞</div>
+                <h3>Telefone</h3>
+                <p>(11) 3456-7890</p>
+                <p>Segunda a Sexta: 8h - 18h</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">📧</div>
+                <h3>E-mail</h3>
+                <p>contato@alicerce.com.br</p>
+                <p>orcamento@alicerce.com.br</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">📍</div>
+                <h3>Escritório</h3>
+                <p>Av. Paulista, 1000</p>
+                <p>São Paulo, SP - 01310-100</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <h2>Como Funciona</h2>
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Contato</h3>
+                <p>Você preenche o formulário com detalhes do projeto</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Análise</h3>
+                <p>Nossa equipe analisa sua solicitação em até 24h</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Reunião</h3>
+                <p>Agendamos visita técnica e reunião presencial</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Proposta</h3>
+                <p>Apresentamos proposta detalhada e cronograma</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Construtora Alicerce</h3>
+                <p>Construindo com qualidade e confiança desde 2002.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>📞 (11) 3456-7890</p>
+                <p>📧 contato@alicerce.com.br</p>
+                <p>📍 Av. Paulista, 1000 - São Paulo, SP</p>
+            </div>
+            <div class="footer-section">
+                <h3>Navegação</h3>
+                <a href="construcao-index.html">Home</a>
+                <a href="construcao-historia.html">Nossa História</a>
+                <a href="construcao-orcamento.html">Agendar Orçamento</a>
+            </div>
+            <div class="footer-section">
+                <h3>Horário de Atendimento</h3>
+                <p>Segunda a Sexta: 8h - 18h</p>
+                <p>Sábado: 9h - 13h</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Construtora Alicerce. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form handling
+        document.getElementById('budgetForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate form submission
+            alert('Obrigado! Sua solicitação foi enviada com sucesso.\n\nNossa equipe entrará em contato em até 24 horas úteis.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Phone mask
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+                value = value.replace(/(\d)(\d{4})$/, '$1-$2');
+                e.target.value = value;
+            }
+        });
+    </script>
+</body>
+</html>
