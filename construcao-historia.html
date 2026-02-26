@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossa História - Construtora Alicerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cinza-concreto: #2C3E50;
+            --cinza-medio: #34495E;
+            --azul-steel: #2980B9;
+            --laranja-construcao: #E67E22;
+            --branco-gelo: #ECF0F1;
+            --preto-profundo: #1A1A1A;
+            --dourado-luxo: #D4AF37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--branco-gelo);
+            color: var(--cinza-concreto);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 4rem;
+            background: rgba(26, 26, 26, 0.98);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        nav .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dourado-luxo);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--dourado-luxo);
+            transition: width 0.4s ease;
+        }
+
+        nav a:hover {
+            color: var(--dourado-luxo);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero History */
+        .hero-history {
+            height: 70vh;
+            background: linear-gradient(135deg, var(--cinza-concreto) 0%, var(--preto-profundo) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-history::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(212, 175, 55, 0.05) 2px, rgba(212, 175, 55, 0.05) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(212, 175, 55, 0.05) 2px, rgba(212, 175, 55, 0.05) 4px);
+            background-size: 50px 50px;
+        }
+
+        .hero-history-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-history h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: white;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-history .highlight {
+            color: var(--dourado-luxo);
+        }
+
+        .hero-history p {
+            font-size: 1.3rem;
+            color: var(--branco-gelo);
+            line-height: 1.6;
+        }
+
+        /* Intro Section */
+        .intro-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .intro-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .intro-content h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--cinza-concreto);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .intro-content p {
+            font-size: 1.2rem;
+            color: #7F8C8D;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 6rem 2rem;
+            background: var(--branco-gelo);
+            position: relative;
+        }
+
+        .timeline-section h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            text-align: center;
+            color: var(--cinza-concreto);
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+        }
+
+        .timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--dourado-luxo), var(--laranja-construcao));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .timeline-year {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            color: var(--dourado-luxo);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            color: var(--cinza-concreto);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .timeline-content p {
+            color: #7F8C8D;
+            line-height: 1.6;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: var(--dourado-luxo);
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--dourado-luxo);
+            z-index: 10;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 6rem 2rem;
+            background: var(--cinza-concreto);
+            color: white;
+        }
+
+        .values-section h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            color: var(--dourado-luxo);
+        }
+
+        .values-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .value-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-10px);
+        }
+
+        .value-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-item h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: var(--dourado-luxo);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .value-item p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--branco-gelo);
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .team-section h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            text-align: center;
+            color: var(--cinza-concreto);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .team-intro {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #7F8C8D;
+            line-height: 1.8;
+        }
+
+        .team-stats {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-stat {
+            text-align: center;
+            padding: 2rem;
+            background: var(--branco-gelo);
+            border-radius: 10px;
+        }
+
+        .team-stat-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            color: var(--dourado-luxo);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-stat-label {
+            font-size: 1rem;
+            color: var(--cinza-concreto);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--azul-steel) 0%, var(--cinza-medio) 100%);
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: white;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            color: var(--branco-gelo);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background: var(--dourado-luxo);
+            color: var(--preto-profundo);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--laranja-construcao);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--preto-profundo);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            color: var(--dourado-luxo);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #BDC3C7;
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--dourado-luxo);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #7F8C8D;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: column !important;
+                padding-left: 60px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">ALICERCE</div>
+            <ul>
+                <li><a href="construcao-index.html">Home</a></li>
+                <li><a href="construcao-historia.html">Nossa História</a></li>
+                <li><a href="construcao-index.html#servicos">Serviços</a></li>
+                <li><a href="construcao-orcamento.html">Agendar Orçamento</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-history">
+        <div class="hero-history-content">
+            <h1>Nossa <span class="highlight">História</span></h1>
+            <p>Mais de duas décadas construindo legados e transformando paisagens urbanas</p>
+        </div>
+    </section>
+
+    <section class="intro-section">
+        <div class="intro-content">
+            <h2>Uma Jornada de Excelência</h2>
+            <p>Fundada em 2002, a Construtora Alicerce nasceu do sonho de três engenheiros apaixonados por construção civil e comprometidos com a excelência.</p>
+            <p>Começamos com um pequeno escritório e uma grande visão: construir não apenas prédios, mas legados que atravessariam gerações.</p>
+            <p>Hoje, somos referência nacional em construção de edifícios residenciais e comerciais, mantendo os mesmos valores que nos trouxeram até aqui.</p>
+        </div>
+    </section>
+
+    <section class="timeline-section">
+        <h2>Nossa Trajetória</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2002</div>
+                    <h3>Fundação</h3>
+                    <p>Três engenheiros visionários fundam a Construtora Alicerce com foco em qualidade e inovação na construção civil.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2005</div>
+                    <h3>Primeiro Grande Projeto</h3>
+                    <p>Conclusão do Edifício Horizonte, nosso primeiro empreendimento de grande porte com 20 andares no centro de São Paulo.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2010</div>
+                    <h3>Expansão Nacional</h3>
+                    <p>Abertura de escritórios em Rio de Janeiro e Belo Horizonte, consolidando presença nacional.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2015</div>
+                    <h3>Certificação Internacional</h3>
+                    <p>Conquista da certificação ISO 9001 e reconhecimento como uma das construtoras mais confiáveis do Brasil.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2020</div>
+                    <h3>Inovação Sustentável</h3>
+                    <p>Lançamento da linha de prédios sustentáveis com tecnologia green building e eficiência energética.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2024</div>
+                    <h3>Liderança de Mercado</h3>
+                    <p>150+ obras concluídas, 500.000m² construídos e milhares de famílias realizando o sonho da casa própria.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <h2>Nossos Valores</h2>
+        <div class="values-grid">
+            <div class="value-item">
+                <div class="value-icon">🎯</div>
+                <h3>Excelência</h3>
+                <p>Comprometimento absoluto com a qualidade em cada detalhe, do projeto à entrega final.</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">🤝</div>
+                <h3>Integridade</h3>
+                <p>Transparência e ética em todas as nossas relações comerciais e contratos.</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">💡</div>
+                <h3>Inovação</h3>
+                <p>Tecnologia de ponta e metodologias modernas para construir o futuro.</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">🌱</div>
+                <h3>Sustentabilidade</h3>
+                <p>Compromisso com práticas sustentáveis e respeito ao meio ambiente.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <h2>Nossa Equipe</h2>
+        <p class="team-intro">
+            Contamos com profissionais altamente qualificados que trabalham com paixão e dedicação para entregar projetos que superam expectativas.
+        </p>
+        <div class="team-stats">
+            <div class="team-stat">
+                <span class="team-stat-number">200+</span>
+                <span class="team-stat-label">Colaboradores</span>
+            </div>
+            <div class="team-stat">
+                <span class="team-stat-number">50+</span>
+                <span class="team-stat-label">Engenheiros</span>
+            </div>
+            <div class="team-stat">
+                <span class="team-stat-number">30+</span>
+                <span class="team-stat-label">Arquitetos</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Faça Parte da Nossa História</h2>
+            <p>Agende uma reunião e descubra como podemos transformar seu projeto em realidade com toda expertise de quem constrói há mais de 20 anos.</p>
+            <a href="construcao-orcamento.html" class="btn-primary">Agendar Reunião</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Construtora Alicerce</h3>
+                <p>Construindo com qualidade e confiança desde 2002.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>📞 (11) 3456-7890</p>
+                <p>📧 contato@alicerce.com.br</p>
+                <p>📍 Av. Paulista, 1000 - São Paulo, SP</p>
+            </div>
+            <div class="footer-section">
+                <h3>Navegação</h3>
+                <a href="construcao-index.html">Home</a>
+                <a href="construcao-historia.html">Nossa História</a>
+                <a href="construcao-orcamento.html">Agendar Orçamento</a>
+            </div>
+            <div class="footer-section">
+                <h3>Horário de Atendimento</h3>
+                <p>Segunda a Sexta: 8h - 18h</p>
+                <p>Sábado: 9h - 13h</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Construtora Alicerce. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
