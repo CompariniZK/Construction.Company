@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendar Orçamento - D&JS Instalações</title>
+    <title>Solicitar Proposta - D&JS Instalações</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -26,7 +26,6 @@
             font-family: 'Montserrat', sans-serif;
             background: var(--branco-gelo);
             color: var(--cinza-concreto);
-            overflow-x: hidden;
         }
 
         /* Navigation */
@@ -296,71 +295,6 @@
             color: var(--branco-gelo);
         }
 
-        /* Process Section */
-        .process-section {
-            padding: 6rem 2rem;
-            background: var(--branco-gelo);
-        }
-
-        .process-section h2 {
-            font-family: 'Oswald', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            text-align: center;
-            color: var(--cinza-concreto);
-            margin-bottom: 3rem;
-            text-transform: uppercase;
-        }
-
-        .process-steps {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .step {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .step:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
-        }
-
-        .step-number {
-            display: inline-block;
-            width: 60px;
-            height: 60px;
-            line-height: 60px;
-            background: var(--dourado-luxo);
-            color: white;
-            font-family: 'Oswald', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-        }
-
-        .step h3 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.3rem;
-            color: var(--cinza-concreto);
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-        }
-
-        .step p {
-            font-size: 0.95rem;
-            color: #7F8C8D;
-            line-height: 1.6;
-        }
-
         /* Footer */
         footer {
             background: var(--preto-profundo);
@@ -432,35 +366,35 @@
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo">D&JS Instalações</div>
+            <div class="logo">D&JS INSTALAÇÕES</div>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="construcao-historia.html">Nossa História</a></li>
                 <li><a href="index.html#servicos">Serviços</a></li>
-                <li><a href="construcao-orcamento.html">Agendar Orçamento</a></li>
+                <li><a href="construcao-orcamento.html">Solicitar Proposta</a></li>
             </ul>
         </div>
     </nav>
 
     <section class="hero-budget">
         <div class="hero-budget-content">
-            <h1>Agende seu Orçamento</h1>
-            <p>Vamos transformar seu projeto em realidade. Preencha o formulário e nossa equipe entrará em contato.</p>
+            <h1>Solicitar Proposta Técnica</h1>
+            <p>Preencha o formulário e nossa equipe entrará em contato com uma proposta detalhada</p>
         </div>
     </section>
 
     <section class="form-section">
         <div class="form-container">
             <div class="form-intro">
-                <h2>Solicite uma Proposta</h2>
-                <p>Preencha os campos abaixo com as informações do seu projeto. Retornaremos em até 24 horas úteis.</p>
+                <h2>Fale com Nossa Equipe</h2>
+                <p>Preencha os campos abaixo com as informações do seu empreendimento. Retornaremos em até 24 horas úteis.</p>
             </div>
 
-            <form class="contact-form" id="budgetForm" action="https://formsubmit.co/gabriel.comparini.ismart@gmail.com" method="POST">
+            <form class="contact-form" action="https://formsubmit.co/gabriel.comparini.ismart@gmail.com" method="POST">
                 <!-- FormSubmit Configuration -->
-                <input type="hidden" name="_subject" value="Nova Solicitação de Orçamento - Construtora Alicerce">
+                <input type="hidden" name="_subject" value="Nova Solicitação de Proposta Técnica - D&JS Instalações">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://SEU-SITE.com/obrigado.html">
+                <input type="hidden" name="_template" value="table">
                 
                 <div class="form-row">
                     <div class="form-group">
@@ -479,45 +413,49 @@
                         <input type="tel" id="telefone" name="telefone" required>
                     </div>
                     <div class="form-group">
-                        <label for="empresa">Empresa (Opcional)</label>
-                        <input type="text" id="empresa" name="empresa">
+                        <label for="empresa">Empresa/Construtora *</label>
+                        <input type="text" id="empresa" name="empresa" required>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="tipo-projeto">Tipo de Projeto *</label>
-                    <select id="tipo-projeto" name="tipo-projeto" required>
+                    <label for="tipo-servico">Tipo de Serviço *</label>
+                    <select id="tipo-servico" name="tipo-servico" required>
                         <option value="">Selecione uma opção</option>
-                        <option value="edificio-residencial">Edifício Residencial</option>
-                        <option value="edificio-comercial">Edifício Comercial</option>
+                        <option value="instalacoes-eletricas">Instalações Elétricas</option>
+                        <option value="instalacoes-hidraulicas">Instalações Hidráulicas</option>
+                        <option value="instalacoes-gas">Instalações de Gás</option>
+                        <option value="sistemas-incendio">Sistemas de Incêndio</option>
+                        <option value="completo">Projeto Completo (Todos os Serviços)</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cidade">Cidade do Empreendimento *</label>
+                        <input type="text" id="cidade" name="cidade" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prazo">Prazo Desejado</label>
+                        <input type="text" id="prazo" name="prazo" placeholder="Ex: 6 meses">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo-empreendimento">Tipo de Empreendimento</label>
+                    <select id="tipo-empreendimento" name="tipo-empreendimento">
+                        <option value="">Selecione uma opção</option>
+                        <option value="residencial">Edifício Residencial</option>
+                        <option value="comercial">Edifício Comercial</option>
                         <option value="condominio">Condomínio</option>
-                        <option value="reforma">Reforma e Ampliação</option>
-                        <option value="projeto-arquitetonico">Projeto Arquitetônico</option>
-                        <option value="consultoria">Consultoria Técnica</option>
+                        <option value="galpao">Galpão Industrial</option>
                         <option value="outro">Outro</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="cidade">Cidade do Projeto *</label>
-                    <input type="text" id="cidade" name="cidade" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="orcamento">Orçamento Estimado</label>
-                    <select id="orcamento" name="orcamento">
-                        <option value="">Selecione uma faixa</option>
-                        <option value="ate-500k">Até R$ 500 mil</option>
-                        <option value="500k-1m">R$ 500 mil - R$ 1 milhão</option>
-                        <option value="1m-3m">R$ 1 milhão - R$ 3 milhões</option>
-                        <option value="3m-5m">R$ 3 milhões - R$ 5 milhões</option>
-                        <option value="acima-5m">Acima de R$ 5 milhões</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="mensagem">Descreva seu Projeto *</label>
-                    <textarea id="mensagem" name="mensagem" required placeholder="Conte-nos mais sobre seu projeto, prazos desejados e qualquer informação relevante..."></textarea>
+                    <label for="detalhes">Detalhes do Projeto *</label>
+                    <textarea id="detalhes" name="detalhes" required placeholder="Descreva o empreendimento: número de unidades, metragem, particularidades técnicas, projetos disponíveis, etc."></textarea>
                 </div>
 
                 <button type="submit" class="submit-btn">Enviar Solicitação</button>
@@ -530,46 +468,20 @@
             <div class="info-card">
                 <div class="info-icon">📞</div>
                 <h3>Telefone</h3>
-                <p>(11) 3456-7890</p>
+                <p>(11) 0000-0000</p>
                 <p>Segunda a Sexta: 8h - 18h</p>
             </div>
             <div class="info-card">
                 <div class="info-icon">📧</div>
                 <h3>E-mail</h3>
-                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cdaea2a3b9acb9a28daca1a4aea8bfaea8e3aea2a0e3afbf">[email&#160;protected]</a></p>
-                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5a3528393b373f342e351a3b3633393f28393f74393537743828">[email&#160;protected]</a></p>
+                <p>contato@djsinstalacoes.com.br</p>
+                <p>orcamento@djsinstalacoes.com.br</p>
             </div>
             <div class="info-card">
                 <div class="info-icon">📍</div>
-                <h3>Escritório</h3>
-                <p>Av. Paulista, 1000</p>
-                <p>São Paulo, SP - 01310-100</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="process-section">
-        <h2>Como Funciona</h2>
-        <div class="process-steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h3>Contato</h3>
-                <p>Você preenche o formulário com detalhes do projeto</p>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <h3>Análise</h3>
-                <p>Nossa equipe analisa sua solicitação em até 24h</p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <h3>Reunião</h3>
-                <p>Agendamos visita técnica e reunião presencial</p>
-            </div>
-            <div class="step">
-                <div class="step-number">4</div>
-                <h3>Proposta</h3>
-                <p>Apresentamos proposta detalhada e cronograma</p>
+                <h3>Atuação</h3>
+                <p>Grande São Paulo</p>
+                <p>Atendimento técnico presencial</p>
             </div>
         </div>
     </section>
@@ -577,20 +489,21 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>D&JS</h3>
-                <p>Construindo com qualidade e confiança desde 2011.</p>
+                <h3>D&JS Instalações</h3>
+                <p>Instalações Elétricas, Hidráulicas e Gás Ltda.</p>
+                <p>Excelência técnica desde 2011.</p>
             </div>
             <div class="footer-section">
                 <h3>Contato</h3>
-                <p>📞 (11) 3456-7890</p>
-                <p>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="35565a5b4154415a7554595c56504756501b565a581b5747">[email&#160;protected]</a></p>
-                <p>📍 Av. Paulista, 1000 - São Paulo, SP</p>
+                <p>📞 (11) 0000-0000</p>
+                <p>📧 contato@djsinstalacoes.com.br</p>
+                <p>📍 Grande São Paulo, SP</p>
             </div>
             <div class="footer-section">
                 <h3>Navegação</h3>
                 <a href="index.html">Home</a>
-                <a href="construcao-historia.html">Nossa História</a>
-                <a href="construcao-orcamento.html">Agendar Orçamento</a>
+                <a href="historia.html">Nossa História</a>
+                <a href="orcamento.html">Solicitar Proposta</a>
             </div>
             <div class="footer-section">
                 <h3>Horário de Atendimento</h3>
@@ -599,8 +512,20 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 D&JS Instalaçoes. Todos os direitos reservados.</p>
+            <p>&copy; 2024 D&JS Instalações Elétricas, Hidráulicas e Gás Ltda. Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
+        // Phone mask
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+                value = value.replace(/(\d)(\d{4})$/, '$1-$2');
+                e.target.value = value;
+            }
+        });
+    </script>
+</body>
+</html>
