@@ -572,7 +572,7 @@
             </div>
         </div>
     </section>
-<br>
+
     <section class="stats-section">
         <div class="stats-grid">
             <div class="stat-item">
@@ -691,6 +691,7 @@
                 <h3>Navegação</h3>
                 <a href="construcao-historia.html">Nossa História</a>
                 <a href="#servicos">Serviços</a>
+                <a href="trabalhe-conosco.html">Trabalhe Conosco</a>
                 <a href="construcao-orcamento.html">Solicitar Proposta</a>
             </div>
             <div class="footer-section">
@@ -750,9 +751,11 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.service-card, .stat-item)').forEach(el => {
+        document.querySelectorAll('.service-card, .stat-item').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             observer.observe(el);
         });
-    
+    </script>
+</body>
+</html>
