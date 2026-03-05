@@ -495,17 +495,20 @@
                 display: flex;
             }
 
+            .nav-container {
+                flex-wrap: wrap;
+            }
+
             nav ul {
                 display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
+                order: 3;
                 width: 100%;
                 flex-direction: column;
                 gap: 0;
-                background: rgba(26, 26, 26, 0.98);
-                padding: 1rem 0 1.5rem;
                 text-align: center;
+                border-top: 1px solid rgba(255, 255, 255, 0.15);
+                margin-top: 0.75rem;
+                padding-top: 0.5rem;
             }
 
             nav ul.open {
@@ -515,10 +518,6 @@
             nav ul li a {
                 display: block;
                 padding: 0.75rem 2rem;
-            }
-
-            .hero {
-                padding-top: 70px;
             }
 
             .hero-content {
