@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalhe Conosco - D&JS Instalações</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cinza-concreto: #2C3E50;
+            --cinza-medio: #34495E;
+            --azul-steel: #2980B9;
+            --laranja-construcao: #E67E22;
+            --branco-gelo: #ECF0F1;
+            --preto-profundo: #1A1A1A;
+            --dourado-luxo: #D4AF37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--branco-gelo);
+            color: var(--cinza-concreto);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 4rem;
+            background: rgba(26, 26, 26, 0.98);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        nav .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dourado-luxo);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--dourado-luxo);
+            transition: width 0.4s ease;
+        }
+
+        nav a:hover {
+            color: var(--dourado-luxo);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero-trabalhe {
+            min-height: 60vh;
+            background: linear-gradient(135deg, var(--cinza-concreto) 0%, var(--preto-profundo) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 80px;
+            padding-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-trabalhe::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(212, 175, 55, 0.05) 2px, rgba(212, 175, 55, 0.05) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(212, 175, 55, 0.05) 2px, rgba(212, 175, 55, 0.05) 4px);
+            background-size: 50px 50px;
+        }
+
+        .hero-trabalhe-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-trabalhe h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: white;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-trabalhe .highlight {
+            color: var(--dourado-luxo);
+        }
+
+        .hero-trabalhe p {
+            font-size: 1.3rem;
+            color: var(--branco-gelo);
+            line-height: 1.6;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .form-intro h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--cinza-concreto);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .form-intro p {
+            font-size: 1.1rem;
+            color: #7F8C8D;
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            background: var(--branco-gelo);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            color: var(--cinza-concreto);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--dourado-luxo);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.5rem;
+            background: var(--dourado-luxo);
+            color: var(--preto-profundo);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--laranja-construcao);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(230, 126, 34, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--preto-profundo);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            color: var(--dourado-luxo);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #BDC3C7;
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--dourado-luxo);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #7F8C8D;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">D&JS INSTALAÇÕES</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="construcao-historia.html">Nossa História</a></li>
+                <li><a href="index.html#servicos">Serviços</a></li>
+                <li><a href="trabalhe-conosco.html">Trabalhe Conosco</a></li>
+                <li><a href="construcao-orcamento.html">Solicitar Proposta</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-trabalhe">
+        <div class="hero-trabalhe-content">
+            <h1>Trabalhe <span class="highlight">Conosco</span></h1>
+            <p>Faça parte de uma equipe especializada em instalações prediais</p>
+        </div>
+    </section>
+
+    <section class="form-section">
+        <div class="form-container">
+            <div class="form-intro">
+                <h2>Envie sua Candidatura</h2>
+                <p>Preencha o formulário abaixo e nossa equipe de RH entrará em contato para as próximas etapas do processo seletivo.</p>
+            </div>
+
+            <form class="contact-form" action="gabriel.comparini.ismart@gmail.com" method="POST">
+                <!-- FormSubmit Configuration -->
+                <input type="hidden" name="_subject" value="Nova Candidatura - D&JS Instalações">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefone">Telefone *</label>
+                        <input type="tel" id="telefone" name="telefone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="idade">Idade *</label>
+                        <input type="number" id="idade" name="idade" min="18" max="100" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="funcao">Função Desejada *</label>
+                    <select id="funcao" name="funcao" required>
+                        <option value="">Selecione uma função</option>
+                        <option value="eletricista">Eletricista</option>
+                        <option value="encanador">Encanador / Instalador Hidráulico</option>
+                        <option value="gasista">Gasista / Instalador de Gás</option>
+                        <option value="instalador-incendio">Instalador de Sistemas de Incêndio</option>
+                        <option value="ajudante">Ajudante Geral</option>
+                        <option value="encarregado">Encarregado de Obras</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="experiencia">Tempo de Experiência *</label>
+                    <select id="experiencia" name="experiencia" required>
+                        <option value="">Selecione</option>
+                        <option value="sem-experiencia">Sem experiência</option>
+                        <option value="ate-1-ano">Até 1 ano</option>
+                        <option value="1-3-anos">1 a 3 anos</option>
+                        <option value="3-5-anos">3 a 5 anos</option>
+                        <option value="5-mais">Mais de 5 anos</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensagem">Conte-nos sobre sua experiência *</label>
+                    <textarea id="mensagem" name="mensagem" required placeholder="Descreva sua experiência profissional, cursos, certificações (NR-10, NR-35, etc.) e por que deseja trabalhar conosco..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Enviar Candidatura</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>D&JS Instalações</h3>
+                <p>Instalações Elétricas, Hidráulicas e Gás Ltda.</p>
+                <p>Excelência técnica desde 2011.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>📞 (11) 0000-0000</p>
+                <p>📧 contato@djsinstalacoes.com.br</p>
+                <p>📍 Grande São Paulo, SP</p>
+            </div>
+            <div class="footer-section">
+                <h3>Navegação</h3>
+                <a href="index.html">Home</a>
+                <a href="construcao-historia.html">Nossa História</a>
+                <a href="construcao-orcamento.html">Solicitar Proposta</a>
+            </div>
+            <div class="footer-section">
+                <h3>Horário de Atendimento</h3>
+                <p>Segunda a Sexta: 8h - 18h</p>
+                <p>Sábado: 9h - 13h</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 D&JS Instalações Elétricas, Hidráulicas e Gás Ltda. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Phone mask
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+                value = value.replace(/(\d)(\d{4})$/, '$1-$2');
+                e.target.value = value;
+            }
+        });
+    </script>
+</body>
+</html>

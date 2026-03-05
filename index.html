@@ -200,11 +200,10 @@
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
+          
             width: 100%;
             height: 100%;
-            background: var(--laranja-construcao);
-            transition: left 0.4s ease;
+         
             z-index: -1;
         }
 
@@ -492,33 +491,29 @@
             <div class="logo">D&JS INSTALAÇÕES</div>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="construcao-historia.html">Nossa História</a></li>
+                <li><a href="historia.html">Nossa História</a></li>
                 <li><a href="#servicos">Serviços</a></li>
-                <li><a href="construcao-orcamento.html">Solicitar Proposta</a></li>
+                <li><a href="trabalhe-conosco.html">Trabalhe Conosco</a></li>
+                <li><a href="orcamento.html">Solicitar Proposta</a></li>
             </ul>
         </div>
     </nav>
-<br>
-<br>
+
     <section class="hero">
         <div class="hero-content">
             <h1>
-            Infraestrutura <br>que <span class="highlight">Sustenta</span>
+                Infraestrutura <br> que <span class="highlight">Sustenta</span> 
             </h1>
             <p class="tagline">
                 Soluções completas em instalações prediais com excelência técnica e cumprimento rigoroso de cronograma.
             </p>
             <div class="hero-buttons">
-                <a href="construcao-orcamento.html" class="btn-primary">Solicitar Proposta Técnica</a>
-                <a href="construcao-historia.html" class="btn-secondary">Conheça Nossa História</a>
+                <a href="orcamento.html" class="btn-primary">Solicitar Proposta Técnica</a>
+                <a href="historia.html" class="btn-secondary">Conheça Nossa História</a>
             </div>
         </div>
     </section>
-
-    <br>
-    <br>
-
-
+<br>
     <section class="stats-section">
         <div class="stats-grid">
             <div class="stat-item">
@@ -569,11 +564,54 @@
         </div>
     </section>
 
+    <!-- Trabalhe Conosco CTA Section -->
+    <section id="trabalhe-conosco" class="trabalhe-cta-section">
+        <div class="trabalhe-cta-content">
+            <h2>Faça Parte da Nossa Equipe</h2>
+            <p>Buscamos profissionais qualificados e comprometidos com excelência técnica. Se você é eletricista, encanador, gasista ou atua em instalações prediais, venha construir sua carreira conosco.</p>
+            <p>Oferecemos ambiente de trabalho seguro, oportunidades de crescimento e projetos desafiadores na Grande São Paulo.</p>
+            <a href="trabalhe-conosco.html" class="btn-primary">Trabalhe Conosco</a>
+        </div>
+    </section>
+
+    <style>
+        .trabalhe-cta-section {
+            padding: 6rem 2rem;
+            background: var(--cinza-concreto);
+            text-align: center;
+        }
+
+        .trabalhe-cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .trabalhe-cta-content h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--dourado-luxo);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .trabalhe-cta-content p {
+            font-size: 1.2rem;
+            color: var(--branco-gelo);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .trabalhe-cta-content .btn-primary {
+            margin-top: 1.5rem;
+        }
+    </style>
+
     <section class="cta-section">
         <div class="cta-content">
             <h2>Pronto para Iniciar seu Empreendimento?</h2>
             <p>Fale com a D&JS e conte com uma equipe especializada em instalações elétricas, hidráulicas, gás e incêndio para executar seu projeto com qualidade e compromisso com o prazo.</p>
-            <a href="construcao-orcamento.html" class="btn-primary">Solicitar Proposta Técnica</a>
+            <a href="orcamento.html" class="btn-primary">Solicitar Proposta Técnica</a>
         </div>
     </section>
 
@@ -587,14 +625,14 @@
             <div class="footer-section">
                 <h3>Contato</h3>
                 <p>📞 (11) 0000-0000</p>
-                <p>📧 contato@djsinstalacoes.com.br</p>
+                <p>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="761519180217021936121c051f180502171a17151913055815191b581404">[email&#160;protected]</a></p>
                 <p>📍 Grande São Paulo, SP</p>
             </div>
             <div class="footer-section">
                 <h3>Navegação</h3>
-                <a href="construcao-historia.html">Nossa História</a>
+                <a href="historia.html">Nossa História</a>
                 <a href="#servicos">Serviços</a>
-                <a href="construcao-orcamento.html">Solicitar Proposta</a>
+                <a href="orcamento.html">Solicitar Proposta</a>
             </div>
             <div class="footer-section">
                 <h3>Horário de Atendimento</h3>
@@ -607,7 +645,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -637,12 +675,9 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.service-card, .stat-item').forEach(el => {
+        document.querySelectorAll('.service-card, .stat-item)').forEach(el => {
             el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease-out';
+            el.style.transform = 'translateY(20px)';
             observer.observe(el);
         });
-    </script>
-</body>
-</html>
+    
